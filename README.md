@@ -97,7 +97,7 @@ Atya.Messaging.InMemory
 |-- tests/InMemory.UnitTests
 |-- samples/InMemory.Samples.Console
 |-- benchmarks/InMemory.Benchmarks
-|-- InMemory.sln
+|-- Messaging.InMemory.sln
 |-- README.md
 `-- LICENSE
 ```
