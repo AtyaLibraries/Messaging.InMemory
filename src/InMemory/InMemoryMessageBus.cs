@@ -44,8 +44,11 @@ public sealed class InMemoryMessageBus<TMessage> :
     }
 
     /// <inheritdoc />
-    public IMessageSubscription Subscribe(IMessageConsumer<TMessage> consumer)
+    public ValueTask<IMessageSubscription> SubscribeAsync(
+        IMessageConsumer<TMessage> consumer,
+        CancellationToken cancellationToken = default)
     {
+        cancellationToken.ThrowIfCancellationRequested();
         var validatedConsumer = Guard.AgainstNull(consumer);
 
         lock (_gate)
@@ -53,7 +56,8 @@ public sealed class InMemoryMessageBus<TMessage> :
             _consumers.Add(validatedConsumer);
         }
 
-        return new InMemoryMessageSubscription<TMessage>(this, validatedConsumer);
+        return ValueTask.FromResult<IMessageSubscription>(
+            new InMemoryMessageSubscription<TMessage>(this, validatedConsumer));
     }
 
     /// <inheritdoc />

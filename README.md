@@ -12,7 +12,7 @@ In-memory messaging transport for tests, local development, and contract validat
 
 `Atya.Messaging.InMemory` is a small in-process transport that implements the `Atya.Messaging.Abstractions` publisher and consumer registry contracts. It is intended for tests, local development, samples, and contract validation before a durable or broker-backed transport is introduced.
 
-The bus stores accepted envelopes in memory and synchronously delivers them to subscribed consumers in registration order.
+The bus stores accepted envelopes in memory and delivers them to subscribed consumers in registration order.
 
 ## Features
 
@@ -44,11 +44,12 @@ using Atya.Messaging.InMemory;
 
 var bus = new InMemoryMessageBus<string>();
 
-bus.Subscribe(new DelegateMessageConsumer<string>((envelope, _) =>
-{
-    Console.WriteLine(envelope.Message);
-    return ValueTask.CompletedTask;
-}));
+await bus.SubscribeAsync(
+    new DelegateMessageConsumer<string>((envelope, _) =>
+    {
+        Console.WriteLine(envelope.Message);
+        return ValueTask.CompletedTask;
+    }));
 
 await bus.PublishAsync(
     "customer.created",
@@ -75,7 +76,8 @@ Remove a consumer:
 using Atya.Messaging.InMemory;
 
 var bus = new InMemoryMessageBus<string>();
-var subscription = bus.Subscribe(new DelegateMessageConsumer<string>((_, _) => ValueTask.CompletedTask));
+var subscription = await bus.SubscribeAsync(
+    new DelegateMessageConsumer<string>((_, _) => ValueTask.CompletedTask));
 
 await subscription.UnsubscribeAsync();
 ```
