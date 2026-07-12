@@ -15,7 +15,7 @@ jobs:
   ci:
     uses: AtyaLibraries/github-workflows/.github/workflows/dotnet-package-ci.yml@950f73c1f1fc997bc2d5c83d68c1729f748a0f77
     with:
-      solution: ./InMemory.sln
+      solution: ./Messaging.InMemory.sln
       test-project: ./tests/InMemory.UnitTests/InMemory.UnitTests.csproj
       package-project: ./src/InMemory/InMemory.csproj
       fail-on-coverage: true
