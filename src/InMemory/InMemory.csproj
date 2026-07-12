@@ -28,7 +28,7 @@
 
   <ItemGroup Label="Runtime dependency">
     <PackageReference Include="Atya.Foundation.Guards" />
-    <ProjectReference Include="..\..\..\Messaging.Abstractions\src\Abstractions\Abstractions.csproj" />
+    <PackageReference Include="Atya.Messaging.Abstractions" />
   </ItemGroup>
 
 </Project>

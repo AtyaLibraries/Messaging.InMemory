@@ -15,11 +15,12 @@ public static class Program
     public static async Task Main()
     {
         var bus = new InMemoryMessageBus<string>();
-        bus.Subscribe(new DelegateMessageConsumer<string>((envelope, _) =>
-        {
-            Console.WriteLine($"Consumed {envelope.MessageId}: {envelope.Message}");
-            return ValueTask.CompletedTask;
-        }));
+        await bus.SubscribeAsync(
+            new DelegateMessageConsumer<string>((envelope, _) =>
+            {
+                Console.WriteLine($"Consumed {envelope.MessageId}: {envelope.Message}");
+                return ValueTask.CompletedTask;
+            }));
 
         await bus.PublishAsync(
             "customer.created",
