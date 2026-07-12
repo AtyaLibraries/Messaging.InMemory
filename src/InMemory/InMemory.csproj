@@ -1,0 +1,34 @@
+<Project Sdk="Atya.Build.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Atya.Messaging.InMemory</AssemblyName>
+    <PackageId>Atya.Messaging.InMemory</PackageId>
+    <RootNamespace>Atya.Messaging.InMemory</RootNamespace>
+    <IsPackable>true</IsPackable>
+    <Authors>Arsen Asulyan</Authors>
+    <Company>Atya</Company>
+    <Copyright>Copyright (c) 2026 Atya</Copyright>
+    <Description>In-memory messaging transport for tests, local development, and contract validation in Atya services.</Description>
+    <PackageTags>dotnet;atya;messaging;inmemory;testing</PackageTags>
+    <RepositoryUrl>https://github.com/AtyaLibraries/Messaging.InMemory</RepositoryUrl>
+    <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+    <!-- Set PackageValidationBaselineVersion to the last stable package version after first stable release. -->
+    <!-- <PackageValidationBaselineVersion>1.0.0</PackageValidationBaselineVersion> -->
+
+    <!-- MinVer derives the version from git tags (e.g. tag `v1.2.3` -> 1.2.3). -->
+    <MinVerTagPrefix>v</MinVerTagPrefix>
+    <MinVerDefaultPreReleaseIdentifiers>alpha.0</MinVerDefaultPreReleaseIdentifiers>
+    <NoWarn Condition="'$(RepositoryUrl)' != '' And $(RepositoryUrl.Contains('__'))">$(NoWarn);CA1707;SA1300</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup Label="Runtime dependency">
+    <PackageReference Include="Atya.Foundation.Guards" />
+    <ProjectReference Include="..\..\..\Messaging.Abstractions\src\Abstractions\Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>
