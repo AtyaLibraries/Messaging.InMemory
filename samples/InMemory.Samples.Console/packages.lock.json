@@ -11,7 +11,7 @@
         "type": "Project",
         "dependencies": {
           "Atya.Foundation.Guards": "[1.0.2, )",
-          "Atya.Messaging.Abstractions": "[1.0.0, )"
+          "Atya.Messaging.Abstractions": "[1.1.0, )"
         }
       },
       "Atya.Foundation.Guards": {
@@ -22,9 +22,9 @@
       },
       "Atya.Messaging.Abstractions": {
         "type": "CentralTransitive",
-        "requested": "[1.0.0, )",
-        "resolved": "1.0.0",
-        "contentHash": "7DvoD+z0su2omw80Heer7uTsWrKnPW6UT3sSpK3R85kVpS83W9CqVpHY5iZ9Kup0/nk2b3xl02cSGUUPDlbmQg==",
+        "requested": "[1.1.0, )",
+        "resolved": "1.1.0",
+        "contentHash": "DG0hLQDqpShDBirsarn2eB1EfWBgJPTkoVPxbdS4PDtLDbVlglH62gIZtGb+CHf8MYOzq3xzvN5pU4WRT/u0ag==",
         "dependencies": {
           "Atya.Foundation.Abstractions": "1.0.4",
           "Atya.Foundation.Guards": "1.0.2"
